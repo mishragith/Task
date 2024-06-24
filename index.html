@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Table</title>
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+  }
+
+  img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    position:relative;
+    top:10%;
+    left: 22%;
+
+  }
+  .new{
+    position: relative;
+    z-index: 10;
+    
+  }
+  .prev{
+    position: absolute;
+  }
+</style>
+</head>
+<body>
+
+<table>
+  <thead class="new">
+    <tr>
+      <th>Product ID</th>
+      <th>Product Name</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>
+        <a href="https://example.com/products/1" class="product-link" data-img="images/apple.jpg">Apple</a>
+      </td>
+      <td>$1.00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>
+        <a href="https://example.com/products/2" class="product-link" data-img="images/cherry.png">Banana</a>
+      </td>
+      <td>$0.50</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+        <a href="https://example.com/products/3" class="product-link" data-img="images/terry.png">Cherry</a>
+      </td>
+      <td>$3.00</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>
+          <a href="https://example.com/products/1" class="product-link" data-img="images/file.png">Apple</a>
+        </td>
+        <td>$1.00</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>
+          <a href="https://example.com/products/1" class="product-link" data-img="images/perry.jpg">Apple</a>
+        </td>
+        <td>$1.00</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>
+          <a href="https://example.com/products/1" class="product-link" data-img="images/terry.png">Apple</a>
+        </td>
+        <td>$1.00</td>
+      </tr>
+  </tbody>
+</table>
+
+<img id="product-image" src="images/apple.jpg" alt="Product Image" class="prev">
+
+<script>
+  document.querySelectorAll('.product-link').forEach(link => {
+    link.addEventListener('mouseover', (e) => {
+      const imgSrc = e.target.getAttribute('data-img');
+      const imgElement = document.getElementById('product-image');
+      imgElement.src = imgSrc;
+      imgElement.style.display = 'block';
+    });
+
+    link.addEventListener('mouseout', () => {
+      const imgElement = document.getElementById('product-image');
+      imgElement.style.display = 'none';
+    });
+  });
+</script>
+
+</body>
+</html>
